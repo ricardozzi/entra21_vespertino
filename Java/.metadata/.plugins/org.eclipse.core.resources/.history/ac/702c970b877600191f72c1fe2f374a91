@@ -1,0 +1,73 @@
+package acao;
+
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+
+import beans.Colaborador;
+import formularios.Formulario01;
+
+public class Acao {
+	
+	//ArrayList
+			public static ArrayList<Colaborador> vetorColaborador = new ArrayList<Colaborador>();
+			public static String estatisticas = "";
+			public static boolean existe = true;
+
+	public void Cadastrar(Colaborador c) {
+		
+		vetorColaborador.add(c);
+
+	}
+	
+	public double vSalarioB(int indice) {
+		
+		double salariobruto = 0;
+		
+		switch (indice) {
+		case 1:
+			salariobruto = 900;
+		break;
+		case 2:
+			salariobruto = 1300;
+		break;
+		case 3:
+			salariobruto = 1800;
+		break;
+		case 4:
+			salariobruto = 2400;
+		break;
+		case 5:
+			salariobruto = 2700;
+		break;
+		case 6:
+			salariobruto = 3200;
+		break;
+		case 7:
+			salariobruto = 3600;
+		break;
+		case 8:
+			salariobruto = 4400;
+		break;
+		}
+		return salariobruto;
+		
+	}
+	//Atualiza a Tabela
+		public DefaultTableModel Atualiza(Colaborador c) {
+			DefaultTableModel dadosTabela = new DefaultTableModel();
+			dadosTabela.addColumn("Colaborador");
+			dadosTabela.addColumn("Salário Líquido");
+	
+
+			for (int i = 0; i < Acao.vetorColaborador.size(); i++) {
+				dadosTabela.addRow(new Object[] { 
+						vetorColaborador.get(i).getColaborador(), 
+						vetorColaborador.get(i).getsLiquido(), });
+
+			}
+				
+			return dadosTabela;
+			}
+
+}

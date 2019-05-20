@@ -1,0 +1,15 @@
+package principal;
+
+import pagamento.Debito;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		//Poli    -> variás/muitas
+		//Morphus -> Formas
+		Debito d = new Debito();
+
+	}
+
+}

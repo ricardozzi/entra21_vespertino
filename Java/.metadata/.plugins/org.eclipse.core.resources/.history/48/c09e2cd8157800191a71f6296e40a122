@@ -1,0 +1,42 @@
+package acao;
+
+import javax.swing.table.DefaultTableModel;
+
+import dados.Dados;
+
+public class Acao {
+	
+	
+	
+	
+	//Atualiza a Tabela
+			public DefaultTableModel Atualiza(Dados d) {
+				DefaultTableModel dadosTabela = new DefaultTableModel();
+				dadosTabela.addColumn("Arroz");
+				dadosTabela.addColumn("Carne");
+				dadosTabela.addColumn("Esponja");
+				dadosTabela.addColumn("Pente");
+				dadosTabela.addColumn("Vinho");
+				dadosTabela.addColumn("Sabão");
+				dadosTabela.addColumn("Pão");
+				dadosTabela.addColumn("Amido");
+		
+
+				for (int i = 0; i < Dados.vetorCarrinho.size(); i++) {
+					dadosTabela.addRow(new Object[] { 
+							Dados.vetorCarrinho.get(i).getArroz(),
+							Dados.vetorCarrinho.get(i).getCarne(), 
+							Dados.vetorCarrinho.get(i).getEsponja(), 
+							Dados.vetorCarrinho.get(i).getPente(), 
+							Dados.vetorCarrinho.get(i).getVinho(), 
+							Dados.vetorCarrinho.get(i).getSabao(), 
+							Dados.vetorCarrinho.get(i).getPao(), 
+							Dados.vetorCarrinho.get(i).getAmido()
+							});
+
+				}
+					
+				return dadosTabela;
+				}
+	
+}

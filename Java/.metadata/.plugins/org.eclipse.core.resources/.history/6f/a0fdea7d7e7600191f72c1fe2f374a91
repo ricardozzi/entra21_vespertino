@@ -1,0 +1,149 @@
+package formularios;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import acao.Acao;
+import beans.Colaborador;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JCheckBox;
+import javax.swing.JSpinner;
+import javax.swing.JButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Formulario01 extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textColab;
+	private JTextField textSBruto;
+	private JTextField textField;
+	private JTextField textImposto;
+	private JTextField textSLiquido;
+	private JTable table;
+
+	
+	public Formulario01() {
+		Acao a = new Acao();
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 678, 521);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblColaborador = new JLabel("Colaborador");
+		lblColaborador.setBounds(34, 33, 100, 14);
+		contentPane.add(lblColaborador);
+		
+		textColab = new JTextField();
+		textColab.setBounds(129, 31, 193, 20);
+		contentPane.add(textColab);
+		textColab.setColumns(10);
+		
+		JLabel lblCargo = new JLabel("Cargo");
+		lblCargo.setBounds(351, 34, 305, 14);
+		contentPane.add(lblCargo);
+		
+		JComboBox cbCargo = new JComboBox();
+		cbCargo.setBounds(409, 30, 247, 22);
+		contentPane.add(cbCargo);
+		
+		JLabel lblSalrioBruto = new JLabel("Sal\u00E1rio Bruto");
+		lblSalrioBruto.setBounds(34, 59, 89, 14);
+		contentPane.add(lblSalrioBruto);
+		
+		textSBruto = new JTextField();
+		textSBruto.setEditable(false);
+		textSBruto.setBounds(129, 59, 193, 20);
+		contentPane.add(textSBruto);
+		textSBruto.setColumns(10);
+		
+		JCheckBox chbClube = new JCheckBox("Clube Fidelidade");
+		chbClube.setBounds(351, 56, 112, 23);
+		contentPane.add(chbClube);
+		
+		JCheckBox chbSaude = new JCheckBox("Plano de Sa\u00FAde");
+		chbSaude.setBounds(479, 56, 137, 23);
+		contentPane.add(chbSaude);
+		
+		JLabel lblValeTransporte = new JLabel("Vale Transporte");
+		lblValeTransporte.setBounds(34, 92, 103, 14);
+		contentPane.add(lblValeTransporte);
+		
+		JCheckBox chbVale = new JCheckBox("");
+		chbVale.setBounds(138, 87, 28, 23);
+		contentPane.add(chbVale);
+		
+		textField = new JTextField();
+		textField.setEditable(false);
+		textField.setBounds(173, 90, 149, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblImpostoDeRenda = new JLabel("Imposto de Renda");
+		lblImpostoDeRenda.setBounds(351, 92, 112, 14);
+		contentPane.add(lblImpostoDeRenda);
+		
+		textImposto = new JTextField();
+		textImposto.setEditable(false);
+		textImposto.setBounds(460, 89, 196, 20);
+		contentPane.add(textImposto);
+		textImposto.setColumns(10);
+		
+		JLabel lblSalrioLquido = new JLabel("Sal\u00E1rio L\u00EDquido");
+		lblSalrioLquido.setBounds(351, 126, 89, 14);
+		contentPane.add(lblSalrioLquido);
+		
+		textSLiquido = new JTextField();
+		textSLiquido.setEditable(false);
+		textSLiquido.setBounds(460, 123, 196, 20);
+		contentPane.add(textSLiquido);
+		textSLiquido.setColumns(10);
+		
+		JLabel lblFaltasNoMs = new JLabel("Faltas no m\u00EAs");
+		lblFaltasNoMs.setBounds(34, 126, 89, 14);
+		contentPane.add(lblFaltasNoMs);
+		
+		JSpinner spnFaltas = new JSpinner();
+		spnFaltas.setBounds(129, 123, 51, 20);
+		contentPane.add(spnFaltas);
+		
+		JButton btnCadastrar = new JButton("Cadastrar Colaborador");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Colaborador c = new Colaborador();
+				c.setColaborador(textColab.getText());
+				
+				table.setModel(a.Atualiza());
+				
+			}
+		});
+		btnCadastrar.setBounds(34, 181, 144, 39);
+		contentPane.add(btnCadastrar);
+		
+		JButton btnEstatistica = new JButton("Estat\u00EDsticas");
+		btnEstatistica.setBounds(216, 181, 144, 39);
+		contentPane.add(btnEstatistica);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 233, 646, 238);
+		contentPane.add(scrollPane);
+		
+		table = new JTable(a.Atualiza());
+		scrollPane.setViewportView(table);
+		
+		
+	}
+}

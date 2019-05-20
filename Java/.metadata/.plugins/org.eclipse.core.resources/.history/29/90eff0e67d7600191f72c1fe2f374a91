@@ -1,0 +1,17 @@
+package acao;
+
+import java.util.ArrayList;
+
+import beans.Colaborador;
+
+public class Acao {
+	
+	//ArrayList
+			public static ArrayList<Colaborador> vetorColaborador = new ArrayList<Colaborador>();
+			public static String estatisticas = "";
+			public static boolean existe = true;
+
+	public void Cadastrar() {
+
+	}
+}

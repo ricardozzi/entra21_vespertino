@@ -1,0 +1,43 @@
+package acao;
+
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+
+import beans.Colaborador;
+
+public class Acao {
+	
+	//ArrayList
+			public static ArrayList<Colaborador> vetorColaborador = new ArrayList<Colaborador>();
+			public static String estatisticas = "";
+			public static boolean existe = true;
+
+	public void Cadastrar(Colaborador c) {
+		
+		vetorColaborador.add(c);
+
+	}
+	
+	public void valorsalario() {
+		
+		
+	}
+	//Atualiza a Tabela
+		public DefaultTableModel Atualiza(Colaborador c) {
+			DefaultTableModel dadosTabela = new DefaultTableModel();
+			dadosTabela.addColumn("Colaborador");
+			dadosTabela.addColumn("Salário Líquido");
+	
+
+			for (int i = 0; i < Acao.vetorColaborador.size(); i++) {
+				dadosTabela.addRow(new Object[] { 
+						vetorColaborador.get(i).getColaborador(), 
+						vetorColaborador.get(i).getsLiquido(), });
+
+			}
+				
+			return dadosTabela;
+			}
+
+}

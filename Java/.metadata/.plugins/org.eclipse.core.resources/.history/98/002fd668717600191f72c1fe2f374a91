@@ -1,0 +1,138 @@
+package acao;
+
+import java.util.ArrayList;
+
+import javax.swing.table.DefaultTableModel;
+
+import beans.Login;
+
+import principal.Principal;
+
+
+public class Acao {
+	
+	//Arraylist
+	public static ArrayList<Login> vetorLogin = new ArrayList<Login>();
+	
+	String recebeTipo = "";
+
+
+	// Cadatro
+	public boolean cadastrar(Login l) {
+
+		boolean validarLogin = validarLogin(l);
+
+		if (validarLogin == false) {
+			vetorLogin.add(l);
+			
+		}
+
+		return validarLogin;
+
+	}
+	//Entrar
+	//public boolean entrar(Login l) {
+		//boolean validarLogin2 = validarLogin2(l);
+		//return validarLogin2;
+	//}
+
+	//validar validar se o usuário existe
+		public boolean validarLogin2(Login l) {
+			boolean existe2 = false;
+			
+			
+			//vetorLogin.add(l);
+			
+			for(int i=0; i<vetorLogin.size(); i++) {
+
+				String nomeLogin  = vetorLogin.get(i).getNome();
+				String senhaLogin = vetorLogin.get(i).getSenha();
+				
+				
+				if((nomeLogin.equals(l.getUsu()))&&(senhaLogin.equals(l.getSenha()))) {
+					existe2 = true;
+				}
+				
+			}
+			System.out.println(existe2);
+			return existe2;
+		}
+	
+	//validar se o nome já existe
+	private boolean validarLogin(Login l) {
+		boolean existe = false;
+		
+		for(int i=0; i<vetorLogin.size(); i++) {
+
+			String nomeLogin = vetorLogin.get(i).getNome();
+			
+			
+			
+			if((nomeLogin.equals(l.getNome()))) {
+				existe = true;
+			}
+			
+		}
+		return existe;
+	}
+	
+	//validar se é Admin ou Simples
+		public boolean Admousimples(Login l) {
+		boolean existe2 = false;
+		// vetorLogin.add(l);
+
+		for (int i = 0; i < vetorLogin.size(); i++) {
+
+			String nomeLogin = vetorLogin.get(i).getNome();
+			String senhaLogin = vetorLogin.get(i).getSenha();
+			String nome1Login = l.getUsu();
+			String senha1Login = l.getSenha();
+
+			System.out.println(nomeLogin);
+			System.out.println(senhaLogin);
+			System.out.println(senha1Login);
+			System.out.println(nome1Login);
+		
+
+			if ((nomeLogin.equals(nome1Login)) && (senhaLogin.equals(senha1Login))) {
+				existe2 = true;
+				
+			}
+
+		}
+		
+		System.out.println(existe2);
+		return existe2;
+
+			}
+			
+		
+	public void alterar() {
+
+	}
+
+	public void excluir() {
+
+	}
+
+	public void listar() {
+
+	}
+	//Selecionar
+		public DefaultTableModel selecionar() {
+			DefaultTableModel dadosTabela = new DefaultTableModel();
+			dadosTabela.addColumn("Nome");
+			dadosTabela.addColumn("Tipo de Usuário");
+			dadosTabela.addColumn("E-mail");
+			
+			for (int i = 0; i < vetorLogin.size(); i++) {
+				dadosTabela.addRow(new Object[] { 
+						vetorLogin.get(i).getNome(), 
+						vetorLogin.get(i).getTipoUsuario(),
+						vetorLogin.get(i).getEmail() });
+
+			}
+				
+			return dadosTabela;
+			}
+}

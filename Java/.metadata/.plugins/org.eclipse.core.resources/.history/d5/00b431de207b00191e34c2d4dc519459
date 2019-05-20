@@ -1,0 +1,16 @@
+package cargos;
+
+public class Desenvolvedor extends Cargo {
+	
+	//Construtor
+	public Desenvolvedor(String cargo, double salario) {
+		this.cargo = cargo;
+		this.salario = salario;
+				
+	}
+
+	//IR
+	public void impostoRenda() {
+		
+	}
+}

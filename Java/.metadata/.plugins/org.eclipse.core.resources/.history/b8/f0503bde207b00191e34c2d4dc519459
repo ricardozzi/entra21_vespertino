@@ -1,0 +1,16 @@
+package cargos;
+
+public class Analista extends Cargo  {
+	
+	//Construtor
+	public Analista(String cargo, double salario) {
+		this.cargo = cargo;
+		this.salario = salario;
+				
+	}
+
+	// IR
+	public void impostoRenda() {
+
+	}
+}

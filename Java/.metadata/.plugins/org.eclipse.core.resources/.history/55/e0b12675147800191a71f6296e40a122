@@ -1,0 +1,39 @@
+package formularios;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+
+public class Formulario02 extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+
+	public Formulario02() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 558, 385);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblListaDosProdutos = new JLabel("Lista dos Produtos");
+		lblListaDosProdutos.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 19));
+		lblListaDosProdutos.setBounds(191, 39, 279, 32);
+		contentPane.add(lblListaDosProdutos);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 111, 522, 224);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+	}
+}

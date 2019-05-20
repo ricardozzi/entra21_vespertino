@@ -1,0 +1,81 @@
+package formularios;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JCheckBox;
+
+public class Formulario01 extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textColab;
+	private JTextField textSBruto;
+	private JTextField textField;
+
+	
+	public Formulario01() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 595, 521);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblColaborador = new JLabel("Colaborador");
+		lblColaborador.setBounds(34, 33, 100, 14);
+		contentPane.add(lblColaborador);
+		
+		textColab = new JTextField();
+		textColab.setBounds(104, 30, 156, 20);
+		contentPane.add(textColab);
+		textColab.setColumns(10);
+		
+		JLabel lblCargo = new JLabel("Cargo");
+		lblCargo.setBounds(301, 33, 48, 14);
+		contentPane.add(lblCargo);
+		
+		JComboBox cbCargo = new JComboBox();
+		cbCargo.setBounds(359, 29, 210, 22);
+		contentPane.add(cbCargo);
+		
+		JLabel lblSalrioBruto = new JLabel("Sal\u00E1rio Bruto");
+		lblSalrioBruto.setBounds(34, 59, 89, 14);
+		contentPane.add(lblSalrioBruto);
+		
+		textSBruto = new JTextField();
+		textSBruto.setBounds(104, 58, 156, 20);
+		contentPane.add(textSBruto);
+		textSBruto.setColumns(10);
+		
+		JCheckBox chbClube = new JCheckBox("Clube Fidelidade");
+		chbClube.setBounds(301, 55, 130, 23);
+		contentPane.add(chbClube);
+		
+		JCheckBox chbSaude = new JCheckBox("Plano de Sa\u00FAde");
+		chbSaude.setBounds(429, 55, 140, 23);
+		contentPane.add(chbSaude);
+		
+		JLabel lblValeTransporte = new JLabel("Vale Transporte");
+		lblValeTransporte.setBounds(34, 84, 89, 14);
+		contentPane.add(lblValeTransporte);
+		
+		JCheckBox chbVale = new JCheckBox("");
+		chbVale.setBounds(114, 80, 28, 23);
+		contentPane.add(chbVale);
+		
+		textField = new JTextField();
+		textField.setBounds(148, 81, 112, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblImpostoDeRenda = new JLabel("Imposto de Renda");
+		lblImpostoDeRenda.setBounds(301, 84, 100, 14);
+		contentPane.add(lblImpostoDeRenda);
+	}
+}

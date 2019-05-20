@@ -1,0 +1,23 @@
+
+public class Principal {
+	
+	//Método Genérico
+	public static <E> void listar(E[] vetor) {
+		for (E elemento : vetor) {
+			System.out.println(elemento+" ");
+		}
+	}
+	
+	//Méttodo Principal
+	public static void main(String[] args) {
+		// Vetores
+		String []   nomes = {"Suelem","Cleiton","Paloma"};
+		Integer[]  idades = {22,30,17};
+		Double [] alturas = {1.70,1.77,1.64};
+		
+		//Chamar o método de listar
+		listar(nomes);
+		
+	}
+
+}

@@ -1,0 +1,180 @@
+package formulario;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import acao.Acao;
+import beans.Login;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+
+public class Formulario02 extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtNome;
+	private JTextField txtEmail;
+	private JPasswordField pasSenha;
+	private JTable table;
+	
+
+	public Formulario02() {
+		
+		Acao a = new Acao();
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 568, 536);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		
+		
+		
+		JButton btnExcluir = new JButton("Excluir");
+		btnExcluir.setBounds(256, 191, 89, 23);
+		contentPane.add(btnExcluir);
+		
+		JButton btnListar = new JButton("Listar");
+		btnListar.setBounds(355, 191, 108, 23);
+		contentPane.add(btnListar);
+		
+		JButton btnSair = new JButton("Sair");
+		btnSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Formulario f1 = new Formulario();
+				f1.setVisible(true);
+				dispose();
+			}
+		});
+		btnSair.setBounds(226, 469, 89, 23);
+		contentPane.add(btnSair);
+		
+		JLabel lblNome = new JLabel("Nome");
+		lblNome.setBounds(123, 11, 48, 14);
+		contentPane.add(lblNome);
+		
+		txtNome = new JTextField();
+		txtNome.setBounds(175, 8, 207, 20);
+		contentPane.add(txtNome);
+		txtNome.setColumns(10);
+		
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setBounds(121, 46, 48, 14);
+		contentPane.add(lblSenha);
+		
+		JLabel lblTipoDeUsurio = new JLabel("Tipo de Usu\u00E1rio");
+		lblTipoDeUsurio.setBounds(121, 84, 89, 14);
+		contentPane.add(lblTipoDeUsurio);
+		
+		JComboBox cbTipoUsu = new JComboBox();
+		cbTipoUsu.setBounds(220, 80, 160, 22);
+		contentPane.add(cbTipoUsu);
+		cbTipoUsu.addItem("Simples");
+		cbTipoUsu.addItem("Administrador");
+		
+
+		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.setBounds(159, 191, 89, 23);
+		contentPane.add(btnAlterar);
+		Login l = new Login();
+		l.setNome(txtNome.getText());
+		l.setSenha(String.valueOf(pasSenha.getPassword()));
+		l.setTipoUsuario(cbTipoUsu.getSelectedItem().toString());
+		l.setEmail(txtEmail.getText());
+		
+		boolean valiada = a.Admousimples(l);
+		
+		if (valiada == false) {
+			btnAlterar.setEnabled(false);
+		}else
+			btnAlterar.setEnabled(true);
+		
+		JLabel lblEmail = new JLabel("E-mail");
+		lblEmail.setBounds(121, 125, 48, 14);
+		contentPane.add(lblEmail);
+		
+		txtEmail = new JTextField();
+		txtEmail.setBounds(173, 122, 207, 20);
+		contentPane.add(txtEmail);
+		txtEmail.setColumns(10);
+		
+		pasSenha = new JPasswordField();
+		pasSenha.setBounds(244, 43, 136, 20);
+		contentPane.add(pasSenha);
+		
+		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					
+				Login l = new Login();
+				l.setNome(txtNome.getText());
+				l.setSenha(String.valueOf(pasSenha.getPassword()));
+				l.setTipoUsuario(cbTipoUsu.getSelectedItem().toString());
+				l.setEmail(txtEmail.getText());
+				
+				//Objeto da classe Acao Realizaar cadastro
+				boolean valida = a.cadastrar(l);
+				
+				
+				//Atualizar a tabela
+				table.setModel(a.selecionar());
+				
+				//Cursor no campo nome
+				txtNome.requestFocus();
+				
+				
+				//mensagem
+				if(valida == false) {
+					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+				}else {
+					JOptionPane.showMessageDialog(null, "usuário já cadastrado, tente novamente");
+				}
+				} catch (Exception erro) {
+					JOptionPane.showMessageDialog(null, "Falha ao cadastrar, tente novamente!");
+				}
+				
+				//Limpar campos
+				txtNome.setText("");
+				txtEmail.setText("");
+				cbTipoUsu.setSelectedIndex(0);
+				pasSenha.setText("");
+				
+				
+				//Cursor no campo jogo
+				txtNome.requestFocus();
+			}
+		});
+		btnCadastrar.setBounds(60, 191, 89, 23);
+		contentPane.add(btnCadastrar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 225, 532, 232);
+		contentPane.add(scrollPane);
+		
+		
+		table = new JTable(a.selecionar());
+		scrollPane.setViewportView(table);
+		table.setVisible(true);
+		
+		
+	
+	}
+}

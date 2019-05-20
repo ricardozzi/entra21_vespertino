@@ -1,0 +1,21 @@
+package cargos;
+
+public class Cargo {
+	
+	//Atributos
+	private String cargo;
+	private double salario;
+	
+	//Construtor
+	public Cargo(String cargo, double salario) {
+		this.cargo = cargo;
+		this.salario = salario;
+				
+	}
+	
+	//Vale transporte
+	public void valeTransporte() {
+		System.out.println("O cargo:"+cargo+", terá um desconto de vale transporte no valor de R$ "+salario*0.06);
+	}
+
+}
